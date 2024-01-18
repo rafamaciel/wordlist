@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 wordlist.txt"
+    exit 1
+fi
+
+wordlist="$1"
+
+before=$(wc -c < "$wordlist")
+
+sort -u "$wordlist" -o "$wordlist"
+
+future=$(wc -c < "$wordlist")
+
+echo "Successfully removed duplicate words in the wordlist: $wordlist."
+echo "File size before: $before bytes"
+echo "File size after: $future bytes"
